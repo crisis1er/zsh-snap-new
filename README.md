@@ -114,58 +114,17 @@ source ~/.zshrc
 snap-new
 ```
 
-The function runs a guided flow:
+### Step 1 — Banner + scenario table
 
-```
-╔══════════════════════════════════════════════════════════════╗
-║              Snap-New — SafeITExperts                        ║
-║              Guided Snapshot Creation                        ║
-╠══════════════════════════════════════════════════════════════╣
-║  You are about to create a snapshot of your system.          ║
-║  → Choose Important if you're about to make a significant    ║
-║    change (update, install, config, downgrade)               ║
-║  → Choose Standard for routine checkpoints                   ║
-╚══════════════════════════════════════════════════════════════╝
+On launch, a banner explains the context. A 2-column table lists 14 pre-defined scenarios (7 Important / 7 Standard). Option `0` lets you type a custom reason.
 
-┌───────────────────────────────┬──────────────────────────────┐
-│  Important                    │  Standard                    │
-├───────────────────────────────┼──────────────────────────────┤
-│  1. Before system update      │  8. Routine checkpoint       │
-│  2. Before kernel change      │  9. After successful test    │
-│  3. Before pkg install/removal│ 10. Clean state              │
-│  4. Before downgrade          │ 11. Weekly snapshot          │
-│  5. Before config change      │ 12. Monthly snapshot         │
-│  6. Before migration          │ 13. After update verified    │
-│  7. Security update           │ 14. Before testing           │
-└───────────────────────────────┴──────────────────────────────┘
-     0.  Custom — type your own reason
+![snap-new — banner and scenario table](assets/snap_new_display_first.png)
 
-Choice [0-14] : 1
+### Step 2 — Context, smart type suggestion, summary, confirmation
 
-Config:
-  (r) root
-  (h) home
-  (b) both
-Choice [rhb] (default: r) : r
+After selecting a scenario, `snap-new` displays the current snapshot state (count + last snapshot). The type is **pre-selected** based on the scenario — here, scenario 1 "Before system update" triggers the important suggestion automatically. A colored summary is shown before execution, and the result confirms the new snapshot ID alongside the previous one.
 
-Current state:
-  root — 24 snapshot(s) — last: #24 "Routine checkpoint" [single, standard] (2026-04-05 18:32)
-
-Type:
-  (s) Standard  — automatic timeline cleanup
-  (i) Important — protected from automatic cleanup
-  → Suggested: important (based on selected scenario)
-Choice [si] (default: i) :
-
-Summary:
-  Config  : root
-  Type    : important
-  Reason  : Before system update (zypper dup)
-
-Confirm? [y/N] : y
-
-✓ Snapshot #25 created [root] — important — "Before system update (zypper dup)" (previous: #24)
-```
+![snap-new — context, type, summary and confirmation](assets/snap_new_display_sd.png)
 
 ---
 
