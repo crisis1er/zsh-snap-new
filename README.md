@@ -30,7 +30,7 @@ flowchart LR
     C --> T[Type\nstandard / important]:::step
     T --> S[Summary\ncolored confirmation]:::confirm
     S --> CR[snapper create\n--cleanup-algorithm timeline]:::output
-    CR --> FB[Feedback\nSnapshot #id created]:::output
+    CR --> FB[Feedback\nSnapshot ID created]:::output
 ```
 
 ---
