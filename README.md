@@ -7,7 +7,12 @@
 
 # zsh-snap-new
 
-Oh My Zsh plugin for **interactive guided snapper snapshot creation** on openSUSE Tumbleweed — replaces the raw `snapper create` command with a step-by-step prompt: reason, config selection, type, confirmation, and colored feedback.
+`snapper create` is powerful but unforgiving. Two silent mistakes break your safety net:
+
+- Omitting `--cleanup-algorithm timeline` → the snapshot is **never cleaned up automatically**, filling your disk over time
+- Omitting `--userdata important=yes` on a critical snapshot → **it gets silently rotated away** by snapper's number/timeline policies
+
+`snap-new` makes both mistakes impossible. It replaces the raw command with a guided flow: a **14-scenario table** pre-fills the description and suggests the right type (standard vs important) based on what you are about to do. Before executing, it checks disk usage, shows existing snapshot context, and asks for confirmation. `--cleanup-algorithm timeline` is always set — you cannot forget it.
 
 Deployed and validated on a live openSUSE Tumbleweed system.
 
