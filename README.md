@@ -18,19 +18,28 @@ Deployed and validated on a live openSUSE Tumbleweed system.
 <sub>⚠️ If the diagram is not visible, refresh the page — Mermaid rendering may take a moment.</sub>
 
 ```mermaid
-flowchart LR
+flowchart TD
     classDef plugin  fill:#1e3a5f,stroke:#93c5fd,stroke-width:2px,color:#ffffff
     classDef step    fill:#14532d,stroke:#86efac,stroke-width:2px,color:#ffffff
     classDef confirm fill:#7f1d1d,stroke:#fca5a5,stroke-width:2px,color:#ffffff
     classDef output  fill:#78350f,stroke:#fcd34d,stroke-width:2px,color:#ffffff
+    classDef note    fill:#1f2937,stroke:#4b5563,stroke-width:1px,color:#9ca3af
 
-    P[zsh-snap-new\nOh My Zsh plugin]:::plugin
-    P --> R[Reason\nmandatory input]:::step
-    R --> C[Config\nroot / home]:::step
-    C --> T[Type\nstandard / important]:::step
-    T --> S[Summary\ncolored confirmation]:::confirm
-    S --> CR[snapper create\n--cleanup-algorithm timeline]:::output
-    CR --> FB[Feedback\nSnapshot ID created]:::output
+    P[zsh-snap-new]:::plugin
+    P --> R[Reason]:::step
+    R --> C[Config]:::step
+    C --> T[Type]:::step
+    T --> S[Summary]:::confirm
+    S --> CR[snapper create]:::output
+    CR --> FB[Feedback]:::output
+
+    P  -.-> NP[Oh My Zsh plugin — entry point]:::note
+    R  -.-> NR[Mandatory free-text — describes the purpose of the snapshot]:::note
+    C  -.-> NC[root / home — auto-detected, home shown only if config exists]:::note
+    T  -.-> NT[standard: timeline cleanup / important: protected from auto-cleanup]:::note
+    S  -.-> NS[Colored recap before execution — confirm or abort]:::note
+    CR -.-> NCR[--cleanup-algorithm timeline always set, important=yes if applicable]:::note
+    FB -.-> NFB[Green confirmation with snapshot ID — red on error]:::note
 ```
 
 ---
