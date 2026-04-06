@@ -1,0 +1,18 @@
+# RELEASE — zsh-snap-new
+
+Version:  v1.0
+Date:     2026-04-06
+Platform: openSUSE Tumbleweed
+Shell:    zsh 5.9+
+
+---
+
+## What's in this release
+
+### Initial release
+- `snap-new` — fully interactive guided snapshot creation
+- Step-by-step prompts: reason, config (root/home), type (standard/important), confirmation
+- Auto-detects available snapper configs — `home` prompt only shown if config exists
+- `--cleanup-algorithm timeline` always set
+- `important=yes` userdata protects snapshot from automatic cleanup
+- Colored ANSI feedback throughout
