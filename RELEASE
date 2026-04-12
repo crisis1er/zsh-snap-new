@@ -1,7 +1,7 @@
 # RELEASE — zsh-snap-new
 
-Version:  v1.0
-Date:     2026-04-06
+Version:  v2.1
+Date:     2026-04-12
 Platform: openSUSE Tumbleweed
 Shell:    zsh 5.9+
 
@@ -9,7 +9,14 @@ Shell:    zsh 5.9+
 
 ## What's in this release
 
-### Initial release
+### v2.1 — Robust parsing + sudo detection + error handling
+- Auto-detect sudo requirement — compatible with ALLOW_USERS/ALLOW_GROUPS
+- CSV parsing in "Current state" and ID sections — locale-independent
+- Config validation at startup with initialization instructions
+- Post-creation exit code check + new_id != prev_id verification
+- English-only confirmations `[y/N]`
+
+### v1.0 — Initial release
 - `snap-new` — fully interactive guided snapshot creation
 - Step-by-step prompts: reason, config (root/home), type (standard/important), confirmation
 - Auto-detects available snapper configs — `home` prompt only shown if config exists
