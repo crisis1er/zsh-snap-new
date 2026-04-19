@@ -1,13 +1,24 @@
 # RELEASE — zsh-snap-new
 
-Version:  v2.1
-Date:     2026-04-12
+Version:  v2.3
+Date:     2026-04-19
 Platform: openSUSE Tumbleweed
 Shell:    zsh 5.9+
 
 ---
 
 ## What's in this release
+
+### v2.3 — Dry-run + TTY safety + UX improvements
+- `--dry-run` flag — shows the snapper command without creating any snapshot
+- `q=quit` option at every interactive prompt — clean exit without error
+- Disk space info displayed before scenario table — colored (green/yellow/red)
+- Sudo detection via `$EUID` — no subprocess needed
+- All `read` prompts use `< /dev/tty` — safe when stdin is piped
+- `snapper list-configs < /dev/null` — prevents TTY contention
+- Input validation loop — retries on invalid scenario choice
+- Custom reason sanitized: `|` → `-` to prevent CSV field corruption
+- Config detection: `[[ -d /etc/snapper/configs/home ]]`
 
 ### v2.1 — Robust parsing + sudo detection + error handling
 - Auto-detect sudo requirement — compatible with ALLOW_USERS/ALLOW_GROUPS

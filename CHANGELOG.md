@@ -4,6 +4,25 @@ All notable changes to this plugin are documented here.
 
 ---
 
+## [2.3] — 2026-04-19
+
+### Added
+- `--dry-run` flag — shows the snapper command that would run without creating any snapshot
+- `q=quit` option at every interactive prompt — clean exit without error
+- Disk space display before scenario table — colored usage (green/yellow/red) with free space info
+
+### Changed
+- Sudo detection uses `$EUID` check instead of running `snapper` — no unnecessary subprocess
+- All `read` prompts use `< /dev/tty` — safe when stdin is piped or redirected
+- `snapper list-configs` called with `< /dev/null` — prevents TTY contention
+- Disk space check moved earlier (informational only, no longer a blocking prompt)
+- Input validation loop on scenario choice — retries on invalid input instead of exiting
+- Custom reason sanitized: `|` replaced by `-` to prevent CSV field corruption
+- Config detection uses `[[ -d /etc/snapper/configs/home ]]` instead of grep
+- Snapshot count uses `wc -l` instead of `grep -c '|'` — more reliable
+
+---
+
 ## [2.1] — 2026-04-12
 
 ### Changed
